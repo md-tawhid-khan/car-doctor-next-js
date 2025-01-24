@@ -18,7 +18,7 @@ const Navbar = () => {
     ]
 
     return (
-        <div className="navbar bg-base-100">
+        <div className="navbar bg-base-100 mx-auto">
   <div className="navbar-start">
     <div className="dropdown">
       <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -50,7 +50,7 @@ const Navbar = () => {
   <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal px-1">
     {
-            links.map(link=><li key={link.path} ><Link href={link.path} className={`${pathName===link.path ? 'text-orange-400': ''}`}>{link.title}</Link>
+            links.map(link=><li key={link.path} ><Link  href={link.path} className={`${pathName===link.path ? 'text-orange-400': ''} font-semibold hover:text-orange-400 duration-300`}>{link.title}</Link>
              </li>)
         }
     </ul>
@@ -58,7 +58,7 @@ const Navbar = () => {
   <div className="navbar-end gap-4">
     <Link href='/'><MdOutlineShoppingBag className='text-xl' /></Link>
     <Link href='/'><CiSearch className='text-xl' /></Link>
-    <a className="btn text-orange-400 border-orange-400">appoinment</a>
+    <a className="btn btn-outline btn-primary text-orange-400 border-orange-400">appoinment</a>
   </div>
 </div>
     );
