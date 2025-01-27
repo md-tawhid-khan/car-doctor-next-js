@@ -3,7 +3,7 @@ import React from 'react';
 
 const AboutUs = () => {
     return (
-        <div className='my-16'>
+        <div >
           <div className=' container grid grid-cols-1  lg:grid-cols-2'>
             <div>
                 <div className='relative h-[350]'>
