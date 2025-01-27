@@ -59,6 +59,7 @@ const Navbar = () => {
     <Link href='/'><MdOutlineShoppingBag className='text-xl' /></Link>
     <Link href='/'><CiSearch className='text-xl' /></Link>
     <a className="btn btn-outline btn-primary text-orange-400 border-orange-400">appoinment</a>
+    <Link href='/signin'><button className='btn btn-outline btn-primary'>Sign in </button></Link>
   </div>
 </div>
     );
