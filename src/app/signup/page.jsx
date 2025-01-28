@@ -1,4 +1,5 @@
 "use client"
+import SocialSignIn from "@/components/Shared/socialSignIn/SocialSignIn";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -84,10 +85,8 @@ if(resp.status === 200){
         </div>
         <div className="grid gap-6 place-items-center">
             <h3>or sign up with</h3>
-            <div className="flex gap-5">
-            <div className="btn rounded-full"><FaGoogle className='text-green-500 text-2xl ' /></div>
-            <div className="btn rounded-full"><FaGithub className="text-2xl"/></div>
-            <div className="btn rounded-full"> <FaFacebook className="text-2xl"/></div>  
+            <div >
+            <SocialSignIn/>
             </div>
             <div>
                 <p>already have an account <Link href='/signin'><span className="text-xl font-semibold text-orange-400 btn btn-link">sign in </span></Link> </p>

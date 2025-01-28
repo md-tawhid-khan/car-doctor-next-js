@@ -6,6 +6,7 @@ import React from 'react';
 import {signIn} from "next-auth/react"
 import { FaFacebook, FaGithub, FaGoogle } from 'react-icons/fa';
 import { useRouter } from 'next/navigation';
+import SocialSignIn from '@/components/Shared/socialSignIn/SocialSignIn';
 
 const page = () => {
   const router=useRouter()
@@ -71,10 +72,8 @@ const page = () => {
         </div>
         <div className="grid gap-6 place-items-center">
             <h3>or sign up with</h3>
-            <div className="flex gap-5">
-            <div className="btn rounded-full"><FaGoogle className='text-green-500 text-2xl ' /></div>
-            <div className="btn rounded-full"><FaGithub className="text-2xl"/></div>
-            <div className="btn rounded-full"> <FaFacebook className="text-2xl"/></div>  
+            <div >
+              <SocialSignIn/>
             </div>
             <div>
                 <p>already have an account <Link href='/signup'><span className="text-xl font-semibold text-orange-400 btn btn-link">sign up </span></Link> </p>
