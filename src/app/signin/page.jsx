@@ -1,12 +1,20 @@
 "use client"
+// import { redirect } from 'next/dist/server/api-utils';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
+import {signIn} from "next-auth/react"
 import { FaFacebook, FaGithub, FaGoogle } from 'react-icons/fa';
 
 const page = () => {
     const handleSubmit=async(e)=>{
-        
+        e.preventDefault()
+        const email=e.target.email.value;
+        const password=e.target.password.value;
+        const resp=await signIn('credentials',{
+          email, password, redirect:false
+        })
+        console.log(resp)
     }
   return (
     <div className="container grid lg:grid-cols-2 p-20 items-center gap-10">
@@ -53,7 +61,7 @@ const page = () => {
               name="password"
             />
           </label>
-          <button className="btn btn-outline btn-primary">sign in</button>
+          <button type='submit' className="btn btn-outline btn-primary">sign in</button>
         </form>
         </div>
         <div className="grid gap-6 place-items-center">

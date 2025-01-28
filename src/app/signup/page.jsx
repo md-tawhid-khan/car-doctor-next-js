@@ -12,8 +12,18 @@ const page = () => {
           email:e.target.email.value,
           password:e.target.password.value,
         }
-
-        console.log(newUser)
+     
+const resp= await fetch('http://localhost:3000/signup/api',{
+  method:"POST",
+  body:JSON.stringify(newUser),
+  headers:{
+    "content-type":"application/json"
+  }
+})
+if(resp.status === 200){
+  e.target.reset()
+}
+      
     }
   return (
     <div className="container grid lg:grid-cols-2 p-20 items-center gap-10">
