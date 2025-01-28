@@ -1,4 +1,5 @@
 "use client"
+import { signOut, useSession } from 'next-auth/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -8,6 +9,8 @@ import { MdOutlineShoppingBag } from "react-icons/md";
 
 const Navbar = () => {
     const pathName=usePathname();
+    const session=useSession()
+    console.log(session)
   
     const links=[
         {title:'Home', path:'/home'},
@@ -59,7 +62,9 @@ const Navbar = () => {
     <Link href='/'><MdOutlineShoppingBag className='text-xl' /></Link>
     <Link href='/'><CiSearch className='text-xl' /></Link>
     <a className="btn btn-outline btn-primary text-orange-400 border-orange-400">appoinment</a>
+   { session?.data? <button className='btn btn-outline btn-primary' onClick={()=>signOut()} > log out</button> :
     <Link href='/signin'><button className='btn btn-outline btn-primary'>Sign in </button></Link>
+    }
   </div>
 </div>
     );

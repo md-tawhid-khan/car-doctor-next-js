@@ -5,8 +5,10 @@ import Link from 'next/link';
 import React from 'react';
 import {signIn} from "next-auth/react"
 import { FaFacebook, FaGithub, FaGoogle } from 'react-icons/fa';
+import { useRouter } from 'next/navigation';
 
 const page = () => {
+  const router=useRouter()
     const handleSubmit=async(e)=>{
         e.preventDefault()
         const email=e.target.email.value;
@@ -15,6 +17,9 @@ const page = () => {
           email, password, redirect:false
         })
         console.log(resp)
+        if(resp.status === 200){
+          router.push('/')
+        }
     }
   return (
     <div className="container grid lg:grid-cols-2 p-20 items-center gap-10">
