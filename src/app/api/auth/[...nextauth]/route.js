@@ -7,9 +7,10 @@ import GitHubProvider from "next-auth/providers/github";
 import FacebookProvider from "next-auth/providers/facebook";
 
 const handler= NextAuth({
+    secret:process.env.NEXT_PUBLIC_AUTH_SECRET ,
     session:{
          strategy:'jwt',
-         maxAge:30*24*60*60
+         maxAge:360*24*60*60
     },
     providers:[
         CredentialsProvider({
@@ -49,7 +50,14 @@ const handler= NextAuth({
             clientSecret: process.env.FACEBOOK_CLIENT_SECRET
           })
      ],
-     callbacks:{},
+     callbacks:{
+        async signIn({ user, account, }) {
+           if(account.provider === 'google' || account.provider === 'github' || account.provider === 'facebook'){
+            return true
+           }
+           return true
+          },
+     },
      pages:{
        signIn:'/signin'
      },

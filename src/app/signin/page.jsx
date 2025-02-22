@@ -4,7 +4,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 import {signIn} from "next-auth/react"
-import { FaFacebook, FaGithub, FaGoogle } from 'react-icons/fa';
 import { useRouter } from 'next/navigation';
 import SocialSignIn from '@/components/Shared/socialSignIn/SocialSignIn';
 

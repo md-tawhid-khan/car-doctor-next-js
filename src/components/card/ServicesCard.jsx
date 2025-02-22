@@ -1,9 +1,10 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import React from 'react';
 import { FaArrowRight } from 'react-icons/fa';
 
 const ServicesCard = ({service}) => {
-    const {img,title,price}=service;
+    const {img,title,price,_id}=service;
     
     return (
         <div className="card bg-base-100 w-96 shadow-xl">
@@ -15,7 +16,7 @@ const ServicesCard = ({service}) => {
     
     <div className="card-actions items-center gap-7  text-orange-600">
         <h3 >price:{price} $</h3>
-      <button className="btn text-orange-600"><FaArrowRight /></button>
+     <Link href={`services/${_id}`}> <button className="btn text-orange-600"><FaArrowRight /></button></Link>
     </div>
   </div>
 </div>
