@@ -4,17 +4,19 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 import {signIn} from "next-auth/react"
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import SocialSignIn from '@/components/Shared/socialSignIn/SocialSignIn';
 
 const page = () => {
   const router=useRouter()
+  const searchParams=useSearchParams()
+  const path=searchParams.get('redirect')
     const handleSubmit=async(e)=>{
         e.preventDefault()
         const email=e.target.email.value;
         const password=e.target.password.value;
         const resp=await signIn('credentials',{
-          email, password, redirect:false
+          email, password, redirect:true, callbackUrl:path?path:'/'
         })
         console.log(resp)
         if(resp.status === 200){

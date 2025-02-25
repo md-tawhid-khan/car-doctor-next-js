@@ -1,6 +1,7 @@
 "use client"
 import { useSession } from 'next-auth/react';
 import Image from 'next/image';
+import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 import { toast, ToastContainer } from 'react-toastify';
 
@@ -20,7 +21,7 @@ const page = () => {
       })
       const resp=await deleted.json() 
      
-      console.log(resp)
+      // console.log(resp)
       if(resp?.res?.deletedCount>0){
         toast.success('deleted successfully')
         loadData()
@@ -60,7 +61,7 @@ const page = () => {
         <td>{price} <span className='text-orange-400 text-2xl'>$</span> </td>
         <td>
             <div className='flex space-x-5'>
-            <button className='btn btn-accent'>edit</button>
+            <Link href={`my-booking/update/${_id}`} className='btn btn-accent'>edit</Link >
             <button onClick={()=>handleDeleteBooking(_id)} className='btn btn-error'>delete</button>
             <ToastContainer />
             </div>

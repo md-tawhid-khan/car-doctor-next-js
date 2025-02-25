@@ -1,12 +1,15 @@
 "use client"
 import { signIn, useSession } from "next-auth/react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import React, { useEffect } from "react";
 import { FaFacebook, FaGithub, FaGoogle } from "react-icons/fa";
 
 const SocialSignIn = () => {
   const router=useRouter()
   const {status}=useSession()
+  const searchParams=useSearchParams()
+  const path=searchParams.get('redirect')
+
   useEffect(()=>{
     if(status ==='authenticated'){
       router.push('/')
@@ -14,7 +17,7 @@ const SocialSignIn = () => {
   },[router, status])
   // console.log(status)
     const handleSocialSignIn=async(provider)=>{
-         const resp=await signIn(provider,{redirect:false})
+         const resp=await signIn(provider,{redirect:true,callbackUrl:path?path:'/'})
     }
   return (
     <div className="flex items-center justify-center space-x-3">
